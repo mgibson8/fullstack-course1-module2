@@ -7,10 +7,19 @@ class LineAnalyzer
   #* highest_wf_words - an array of words with the maximum number of occurrences (calculated)
   #* content          - the string analyzed (provided)
   #* line_number      - the line number analyzed (provided)
+  attr_reader :highest_wf_count, :highest_wf_words, :content, :line_number
 
   #Add the following methods in the LineAnalyzer class.
   #* initialize() - taking a line of text (content) and a line number
+  def initialize(content, line_number)
+    @content = content
+    @line_number = line_number
+    calculate_word_frequency
+  end
   #* calculate_word_frequency() - calculates result
+  def calculate_word_frequency
+    
+  end
 
   #Implement the initialize() method to:
   #* take in a line of text and line number
@@ -32,13 +41,31 @@ class Solution
   #* highest_count_across_lines - a number with the maximum value for highest_wf_words attribute in the analyzers array.
   #* highest_count_words_across_lines - a filtered array of LineAnalyzer objects with the highest_wf_words attribute 
   #  equal to the highest_count_across_lines determined previously.
+  attr_reader :analyzers, :highest_count_across_lines, :highest_count_words_across_lines
+  
+  def initialize()
+    @analyzers = []
+  end
 
   # Implement the following methods in the Solution class.
   #* analyze_file() - processes 'test.txt' intro an array of LineAnalyzers and stores them in analyzers.
+  def analyze_file
+    line_number=1
+      File.foreach("test.txt") do |line|
+        @analyzers.push(LineAnalyzer.new(line.chomp, line_number))
+        line_number+=1
+      end
+  end
   #* calculate_line_with_highest_frequency() - determines the highest_count_across_lines and 
   #  highest_count_words_across_lines attribute values
+  def calculate_line_with_highest_frequency
+    
+  end
   #* print_highest_word_frequency_across_lines() - prints the values of LineAnalyzer objects in 
   #  highest_count_words_across_lines in the specified format
+  def print_highest_word_frequency_across_lines
+    
+  end
   
   # Implement the analyze_file() method() to:
   #* Read the 'test.txt' file in lines 
